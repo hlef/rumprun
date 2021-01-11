@@ -383,7 +383,7 @@ buildrump ()
 
 	extracflags=
 	[ "${MACHINE_GNU_ARCH}" = "x86_64" ] \
-	    && extracflags='-F CFLAGS=-mno-red-zone'
+	    && extracflags='-F CFLAGS=-mno-red-zone -F CPPFLAGS=-Wno-error'
 
 	# Disable new errors on GCC 7 which break netbsd-src compilation
 	#

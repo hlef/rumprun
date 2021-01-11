@@ -50,7 +50,7 @@ OPT_SUDO=
 # SPT is built with all modules
 SOLO5_SPT=${SOLO5SRC}/tenders/spt/solo5-spt
 # We need an HVT binary built with just the blk module
-SOLO5_HVT=${SOLO5SRC}/tests/test_blk/solo5-hvt
+SOLO5_HVT=${SOLO5SRC}/tenders/hvt/solo5-hvt
 
 die ()
 {
@@ -102,7 +102,7 @@ runguest ()
 		cookie=$(${SOLO5_SPT} --block:rootfs=${img1} --net:tap=tap100 ${testprog} '{"cmdline":"testprog __test","blk":{"source":"etfs","path":"ld0d","fstype":"blk"}}')
 		;;
 	hvt)
-		cookie=$(${SOLO5_HVT} --disk=${img1} ${testprog} '{"cmdline":"testprog __test","blk":{"source":"etfs","path":"ld0d","fstype":"blk"}}')
+		cookie=$(${SOLO5_HVT} --block:rootfs=${img1} --net:tap=tap100 ${testprog} '{"cmdline":"testprog __test","blk":{"source":"etfs","path":"ld0d","fstype":"blk"}}')
 		;;
 	*)
 		cookie=$(${RUMPRUN} ${OPT_SUDO} ${STACK} -b ${img1} ${testprog} __test)
